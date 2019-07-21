@@ -1,13 +1,17 @@
-##tutorial aula 07:
+##tutorial 07:
+#Criando e salvando gráficos no R
 
+#gráficos de dispersão:
+#carregando os dados:
 salario <- read.csv("./data/salarios.csv")
+
+#checando os dados:
 head(salario)
 summary(salario)
 
 # explore os dados com as funções head e summary
 # criando objetos para auxiliar a construção do gráfico
 # criando modelos lineares
-
 mh <- lm(salario ~ experiencia, data=salario[salario$sexo=="H",])
 mh
 mm <- lm(salario ~ experiencia, data=salario[salario$sexo=="M",])
@@ -99,6 +103,8 @@ abline(a=coefm[1], b=coefm[2],
 #para salvar o gráfico como png!
 dev.off()
 
+
+##usando a função legend() nos gráficos de dispersão:
 # plot dos valores de salario dos homens
 plot(salario ~ experiencia, data=salario[salario$sexo=="H",], 
      col="tomato",
