@@ -5,7 +5,7 @@ library(rgdal)
 library(raster)
 
 #Importar um shape e plotar:
-westeros <- readOGR("./data/Westeros_Essos_shp/GoTRelease/political.shp", encoding = "UTF-8"
+westeros <- readOGR("./data/Westeros_Essos_shp/GoTRelease/political.shp", encoding = "UTF-8")
                     
 plot(westeros, las = 1, axes = T)
 abline(h = 0, lty = 2, col = "tomato")
@@ -61,9 +61,16 @@ writeOGR(
   driver = "ESRI Shapefile" #formato pretendido para exportação
 )
 
-#deu erro ao utiliar essa função , então nós concertamos fazendo uma correção:
+#deu erro ao utiliar essa função, então nós concertamos fazendo uma correção:
 westeros_contorno$id<-1
 
+#e depois voltamos a exportar com a mesma função anterior:
+writeOGR(
+  westeros_contorno, #nome do objeto a ser salvo
+  dsn = "./data/results", #diretorio a serem salvos os resultados
+  layer = "westeros_contorno", #nome do arquivo
+  driver = "ESRI Shapefile" #formato pretendido para exportação
+)
 
 #criando raster a partir de um shape:
 westeros_raster <- raster(westeros_contorno, res = 0.08)
