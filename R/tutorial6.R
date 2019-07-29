@@ -1,6 +1,11 @@
 #tutorial 6
 
 #exercitar a análise exploratória de dados no R:
+# carregando o pacote GGally
+## se você não tiver o pacote usar: install.packages("GGally")
+## se já tiver o pacote, apenas carregue:
+
+library(GGally)
 
 #carregar os dados que já existem no R:
 data("anscombe")
@@ -245,9 +250,5 @@ par(mfrow=c(1,1))
 
 #relação entre variáveis:
 pairs(vars)
-# carregando o pacote GGally
-## se você não tiver o pacote usar:
-# install.packages("GGally")
-## se já tiver o pacote, apenas carregue
-library(GGally)
+
 ggpairs(vars)
